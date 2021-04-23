@@ -26,6 +26,9 @@ function fromDir(dirPath,dirPathLength) {
         if (stat.isDirectory()){
             fromDir(filename,dirPathLength+1+nameEstimate); //recurse
         }
+        else if(stat.isSymbolicLink()) {
+            console.log( "symbolic link:", filename );
+        }
         else {
             scanned++;
             if( scanned % 1000 == 0 ) console.log( scanned );
